@@ -1,6 +1,7 @@
 import axios from "axios";
+import config from "../components/config"; // adjust path as needed
 
-const API_URL = `${import.meta.env.VITE_API_URL}/api/tasks`;
+const API_URL = `${config.url}/api/tasks`;
 
 class TaskService {
   getAllTasks() {
@@ -11,8 +12,7 @@ class TaskService {
     return axios.get(`${API_URL}/get/${id}`);
   }
 
-  createTask(task) 
-  {
+  createTask(task) {
     console.log("Backend API base URL:", API_URL);
     return axios.post(`${API_URL}/add`, task);
   }
@@ -24,7 +24,6 @@ class TaskService {
   updateStatus(id, task) {
     return axios.put(`${API_URL}/updatestatus/${id}`, task);
   }
-
 
   deleteTask(id) {
     return axios.delete(`${API_URL}/delete/${id}`);
